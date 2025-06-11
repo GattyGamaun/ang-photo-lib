@@ -1,12 +1,18 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.html',
-  styleUrl: './app.css'
+  imports: [RouterOutlet, RouterLink, RouterLinkActive],
+  template: `
+    <nav>
+      <button [routerLink]="'/'" routerLinkActive="active">Photos</button>
+      <button [routerLink]="'/favorites'" routerLinkActive="active">
+        Favorites
+      </button>
+    </nav>
+    <router-outlet />
+  `,
+  styleUrl: './app.css',
 })
-export class App {
-  protected title = 'ang-photo-lib';
-}
+export class App {}
