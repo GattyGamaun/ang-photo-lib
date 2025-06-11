@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
+import { PHOTO_URL } from '../constants';
 
 @Injectable({ providedIn: 'root' })
 export class PhotoService {
@@ -14,9 +15,9 @@ export class PhotoService {
   fetchPhotos(): Observable<string[]> {
     const photos = Array.from(
       { length: 10 },
-      () => `https://picsum.photos/id/${Math.floor(Math.random() * 100)}/200`,
+      () => `${PHOTO_URL}/id/${Math.floor(Math.random() * 100)}/200`,
     );
-    const randomDelay = Math.random() * 100 + 200; // Delay between 200-300ms
+    const randomDelay = Math.random() * 100 + 200;
     return of(photos).pipe(delay(randomDelay));
   }
 
@@ -31,12 +32,8 @@ export class PhotoService {
     return this.favorites;
   }
 
-  removeFromFavorites(photo: string) {
+  removeFromFavorites(photo: string): void {
     this.favorites = this.favorites.filter((fav) => fav !== photo);
     localStorage.setItem('favorites', JSON.stringify(this.favorites));
-  }
-
-  getPhotoById(id: string): string | null {
-    return this.favorites.find((photo) => photo.includes(id)) || null;
   }
 }

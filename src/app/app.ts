@@ -5,14 +5,24 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
   selector: 'app-root',
   imports: [RouterOutlet, RouterLink, RouterLinkActive],
   template: `
-    <nav>
-      <button [routerLink]="'/'" routerLinkActive="active">Photos</button>
-      <button [routerLink]="'/favorites'" routerLinkActive="active">
+    <nav class="wrapper flex mt-1 mb-1">
+      <button
+        routerLink=""
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        Photos
+      </button>
+      <button routerLink="/favorites" routerLinkActive="active">
         Favorites
       </button>
     </nav>
     <router-outlet />
   `,
-  styleUrl: './app.css',
+  styles: `
+    .wrapper {
+      justify-content: space-around;
+    }
+  `,
 })
 export class App {}
