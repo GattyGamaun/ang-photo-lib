@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { delay } from 'rxjs/operators';
 import { PHOTO_URL } from '../constants';
 
 @Injectable({ providedIn: 'root' })
@@ -17,8 +16,8 @@ export class PhotoService {
       { length: 10 },
       () => `${PHOTO_URL}/id/${Math.floor(Math.random() * 100)}/200`,
     );
-    const randomDelay = Math.random() * 100 + 200;
-    return of(photos).pipe(delay(randomDelay));
+
+    return of(photos);
   }
 
   addToFavorites(photo: string) {

@@ -1,0 +1,22 @@
+<div
+  appScroll
+  class="flex gap-05 wrap container"
+  (scrollEnd)="onScrollEnd()"
+>
+  @for (photo of photos; track $index) {
+    <img
+      [ngSrc]="photo"
+      alt=""
+      width="200"
+      height="200"
+      priority
+      (click)="addToFavorites(photo)"
+    />
+  }
+</div>
+
+@if (loading) {
+  <div class="f-center mt-1">
+    <div class="loader"></div>
+  </div>
+}

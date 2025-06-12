@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   selector: 'app-favorites',
   imports: [NgOptimizedImage],
   template: `
-    <section class="flex gap-05 wrap">
+    <section class="f-center gap-05 wrap">
       @for (photo of favorites; track $index) {
         <img
           [ngSrc]="photo"
