@@ -8,9 +8,8 @@ describe('Favorites', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Favorites]
-    })
-    .compileComponents();
+      imports: [Favorites],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(Favorites);
     component = fixture.componentInstance;
@@ -19,5 +18,10 @@ describe('Favorites', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should have the Image tag', () => {
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelector('[test-id="image"]')).toBeDefined();
   });
 });

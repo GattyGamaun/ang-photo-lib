@@ -16,7 +16,7 @@ export class PhotoStream implements OnInit {
   readonly zone = inject(NgZone);
   readonly destroyRef = inject(DestroyRef);
 
-  protected photos: string[] = [];
+  photos: string[] = [];
   protected loading = false;
 
   ngOnInit(): void {

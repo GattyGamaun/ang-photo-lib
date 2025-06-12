@@ -5,16 +5,21 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
   selector: 'app-root',
   imports: [RouterOutlet, RouterLink, RouterLinkActive],
   template: `
-    <header class="f-center">
+    <header test-id="header" class="f-center">
       <nav class="wrapper flex mt-1 mb-1">
         <button
+          test-id="photos"
           routerLink=""
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: true }"
         >
           Photos
         </button>
-        <button routerLink="/favorites" routerLinkActive="active">
+        <button
+          test-id="favorites"
+          routerLink="/favorites"
+          routerLinkActive="active"
+        >
           Favorites
         </button>
       </nav>

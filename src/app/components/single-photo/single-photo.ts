@@ -10,9 +10,18 @@ import { PHOTO_URL } from '../../constants';
   template: `
     <section class="mt-1 mb-1">
       @if (photo) {
-        <img [ngSrc]="photo" alt="" width="600" height="800" priority />
+        <img
+          test-id="image"
+          [ngSrc]="photo"
+          alt=""
+          width="600"
+          height="800"
+          priority
+        />
         <div class="mt-1">
-          <button (click)="removeFromFavorites()">Remove from Favorites</button>
+          <button test-id="remove" (click)="removeFromFavorites()">
+            Remove from Favorites
+          </button>
         </div>
       }
     </section>

@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
     <section class="f-center gap-05 wrap">
       @for (photo of favorites; track $index) {
         <img
+          test-id="image"
           [ngSrc]="photo"
           width="200"
           height="200"
