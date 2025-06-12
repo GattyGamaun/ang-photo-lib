@@ -37,7 +37,7 @@ export class Scroll implements OnInit {
 
   onScroll(): void {
     const el = this.container.nativeElement;
-    const pxFromBottom = 100;
+    const pxFromBottom = 200;
     const distanceFromBottom =
       el.scrollHeight - (el.scrollTop + el.clientHeight);
 

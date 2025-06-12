@@ -1,9 +1,6 @@
-<div
-  appScroll
-  class="flex gap-05 wrap container"
-  (scrollEnd)="onScrollEnd()"
->
-  @for (photo of photos; track $index) {
+<section class="f-center">
+  <div appScroll class="flex gap-05 wrap container" (scrollEnd)="onScrollEnd()">
+    @for (photo of photos; track $index) {
     <img
       [ngSrc]="photo"
       alt=""
@@ -12,11 +9,12 @@
       priority
       (click)="addToFavorites(photo)"
     />
-  }
-</div>
+    }
+  </div>
+</section>
 
 @if (loading) {
-  <div class="f-center mt-1">
-    <div class="loader"></div>
-  </div>
+<div class="f-center mt-1">
+  <div class="loader"></div>
+</div>
 }

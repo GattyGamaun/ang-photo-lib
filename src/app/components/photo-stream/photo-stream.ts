@@ -2,7 +2,7 @@ import { Component, DestroyRef, inject, NgZone, OnInit } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
 import { PhotoService } from '../../services/photo';
 import { Scroll } from '../../directives/scroll';
-import { asyncScheduler, of, throttleTime } from 'rxjs';
+import { asyncScheduler, of, subscribeOn, throttleTime } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
@@ -27,10 +27,15 @@ export class PhotoStream implements OnInit {
     const randomDelay = Math.random() * 100 + 200;
     this.photoService
       .fetchPhotos()
-      .pipe(throttleTime(randomDelay), takeUntilDestroyed(this.destroyRef))
+      .pipe(
+        throttleTime(randomDelay),
+        subscribeOn(asyncScheduler, 100),
+        takeUntilDestroyed(this.destroyRef),
+      )
       .subscribe({
         next: (newPhotos) => {
           this.photos = [...this.photos, ...newPhotos];
+          this.loading = false;
         },
         error: (err) => {
           console.error(err);
@@ -47,9 +52,6 @@ export class PhotoStream implements OnInit {
     this.loading = true;
     this.zone.run(() => {
       this.loadImages();
-      asyncScheduler.schedule(() => {
-        this.loading = false;
-      }, 100);
     });
   }
 }

@@ -1,5 +1,6 @@
 .container {
-  height: 80vh;
+  height: 50vh;
+  width: 50%;
   overflow-y: scroll;
   justify-content: center;
 }
